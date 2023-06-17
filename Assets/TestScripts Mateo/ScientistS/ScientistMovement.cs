@@ -14,9 +14,14 @@ public class ScientistMovement : MonoBehaviour
     bool isEdge; // the character is in the edge of the screen
     // bool 
     #endregion
-    // Start is called before the first frame update
+    
+
+    # region status
+    ScientistStatus status;
+    # endregion
     void Start()
     {
+        status = GetComponent<ScientistStatus>();
         RandomStart();
     }
 
