@@ -21,7 +21,7 @@ public class ScientistStatus : MonoBehaviour
         idle
     }
 
-    public Dir movementDir;
+    Dir movementDir;
     Suspicion susStatus;
     Task taskStatus;
 
