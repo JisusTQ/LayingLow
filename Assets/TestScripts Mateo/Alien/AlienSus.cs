@@ -17,7 +17,7 @@ public class AlienSus : MonoBehaviour
     ///-Is in decomposed-corpse form <paramref name="susPercentage"/> = 25%
     ///-Is in bones-corpse form <paramref name="susPercentage"/> = 80%
     ///Input: None<br/>
-    ///Return: <paramref name="susPercentage"/> between 5 to 100 percent
+    ///Return: <paramref name="susPercentage"/> between 0 to 100 percent
     ///</summary>
     public int HowSus(){
         int susPercentage=100;
@@ -26,6 +26,10 @@ public class AlienSus : MonoBehaviour
             susPercentage =  SusCorpse();
         }
 
+        else if (alienStatus.GetForm() == AlienStatus.Form.duct){
+            susPercentage = 0;
+        }
+        Debug.Log(susPercentage);
         return susPercentage;
     }
 

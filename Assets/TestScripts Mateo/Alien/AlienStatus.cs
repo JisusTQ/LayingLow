@@ -6,7 +6,8 @@ public class AlienStatus : MonoBehaviour
 {
     public enum Form{
         alien,
-        corpse
+        corpse,
+        duct
     }
 
     public enum CorpseStatus{

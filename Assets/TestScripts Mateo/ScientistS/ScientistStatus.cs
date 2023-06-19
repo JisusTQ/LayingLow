@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class ScientistStatus : MonoBehaviour
 {
-    public enum Dir{
-        left,
-        right
-    }
 
     public enum Suspicion{
         none,
@@ -21,35 +17,12 @@ public class ScientistStatus : MonoBehaviour
         idle
     }
 
-    Dir movementDir;
     Suspicion susStatus;
     Task taskStatus;
 
     public void Start(){
         RandomStart();
     }
-
-    #region Direction
-    ///<summary>
-    ///Description: Public function to <b>GET</b> the direction status<br/>
-    ///Input: None<br/>
-    ///Return: MovementDir status
-    ///</summary>
-    public Dir GetDir()
-    {
-        return movementDir;
-    }
-
-    ///<summary>
-    ///Description: Public function to <b>SET</b> the direction status to <paramref name="dir"/> provided as parameter <br/>
-    ///Input: <paramref name="dir"/><br/>
-    ///Return: None
-    ///</summary>
-    public void SetDir(Dir dir)
-    {
-        movementDir = dir;
-    }
-    #endregion
 
     #region Suspicion
     ///<summary>
@@ -102,20 +75,8 @@ public class ScientistStatus : MonoBehaviour
     ///Return: None
     ///</summary>
     private void RandomStart(){
-        int randDir = Random.Range(0,2);
         int randTask = Random.Range(0,3);
-
-        switch (randDir)
-        {
-            case 0:
-                SetDir(Dir.left);
-            break;
-
-            case 1:
-                SetDir(Dir.right);
-            break;
-        }
-
+        
         switch (randTask)
         {
             case 0:

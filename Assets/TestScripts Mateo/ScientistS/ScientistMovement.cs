@@ -6,7 +6,9 @@ public class ScientistMovement : MonoBehaviour
 {
 
     #region movement variables
-    int direction; // direction will change between 1 and -1
+    int dir; // direction will change between 1 and -1
+    int prevDir; // Stores the current dir, to compare when dir changes
+    Vector3 oneEightyTurn = new Vector3(0,180,0);
     [Header("Movement Variables")]
     [Tooltip("How fast the object will walk")]
     public float walkSpeed; // how fast the object will walk
@@ -36,10 +38,13 @@ public class ScientistMovement : MonoBehaviour
     
     
     void Start()
-    {   
+    {   //Get Components
         redButton = GameObject.FindGameObjectWithTag("redbutton").GetComponent<Transform>();
         funActivities = GameObject.FindGameObjectsWithTag("funnies");
         status = GetComponent<ScientistStatus>();
+        //Set Object Direction
+        SetDir();
+        //Start task selection coroutine
         StartCoroutine(Choosetask());
     }
 
@@ -48,6 +53,29 @@ public class ScientistMovement : MonoBehaviour
     {
         TaskExe();
     }
+    #region Direction
+    ///<summary>
+    ///Description: We need to set a direction for the scientists at the beggining, that way, not all the scientist will be facing right if they start with Idle, the object has a 50% to face either way, and starting direction will be stored in <paramref name="prevDir"/><br/>
+    ///Input: None<br/>
+    ///Return: None
+    ///</summary>
+    private void SetDir(){
+        dir = (Random.value<0.5f)?-1:1;
+        transform.eulerAngles+=(dir==1)?Vector3.zero:oneEightyTurn;
+        prevDir = dir;
+    }
+
+    ///<summary>
+    ///Description: Every time <paramref name="dir"/> changes, a rotation correction will be applied and <paramref name="prevDir"/> will be set to the current <paramref name="dir"/> value <br/>
+    ///Input: None
+    ///Return: None
+    private void NewDir(){
+        if (prevDir!=dir){
+            transform.eulerAngles+= oneEightyTurn;
+            prevDir = dir;
+        }
+    }
+    #endregion
 
     ///<summary>
     ///Description: While scientist are unaware of the alien presence (status.Suspicion = none) they will just walk in the room. If they reach the edge of the room, they will change their direction of movement<br/>
@@ -61,13 +89,14 @@ public class ScientistMovement : MonoBehaviour
         Vector3 step= new Vector3(walkSpeed,0,0)*Time.fixedDeltaTime;
 
         if(currentPos.x<10 && currentPos.x>-10){
-            transform.position+=step*direction;
+            transform.position+=step*dir;
             return;
         }
 
-        direction *=-1;
+        dir *=-1;
+        NewDir();
 
-        transform.position +=step*direction;
+        transform.position +=step*dir;
     }
 
     ///<summary>
@@ -76,12 +105,12 @@ public class ScientistMovement : MonoBehaviour
     ///Return: None
     ///</summary>
     private void Run(){
-        int redButtonDir;
         float distanceToRedButton = redButton.position.x - transform.position.x;
 
-        redButtonDir = (distanceToRedButton<0)?-1:1;
+        dir = (distanceToRedButton<0)?-1:1;
+        NewDir();
 
-        Vector3 step = new Vector3(runSpeed, 0, 0)* Time.fixedDeltaTime * redButtonDir;
+        Vector3 step = new Vector3(runSpeed, 0, 0)* Time.fixedDeltaTime * dir;
         transform.position += step;
     }
 
@@ -99,12 +128,12 @@ public class ScientistMovement : MonoBehaviour
 
         if (!isWorking)
         {
-            int workDir;
             float distanceToWork = funActivities[chooseActivitie].transform.position.x - transform.position.x;
 
-            workDir = (distanceToWork<0)? - 1:1;
+           dir = (distanceToWork<0)? - 1:1;
+           NewDir();
             
-            Vector3 step = new Vector3(walkSpeed, 0, 0)* Time.fixedDeltaTime * workDir;
+            Vector3 step = new Vector3(walkSpeed, 0, 0)* Time.fixedDeltaTime * dir;
             transform.position += step;
         }
         if (transform.position.x <(funActivities[chooseActivitie].transform.position.x+0.1) && transform.position.x >(funActivities[chooseActivitie].transform.position.x-0.1)){
@@ -112,11 +141,17 @@ public class ScientistMovement : MonoBehaviour
         }
     }
 
+    ///<summary>
+    ///Description:<br/>
+    ///- Choose a task to do every 15 seconds between the available options<br/>
+    ///- 
+    ///Input: None<br/>
+    ///Return: None
+    ///</summary>
     IEnumerator Choosetask(){
         while(true){
             Debug.Log(status.GetTask());
-            direction = (status.GetDir()==ScientistStatus.Dir.right)?1:-1;
-            yield return new WaitForSeconds(15);
+            yield return new WaitForSeconds(5);
             int randTask = Random.Range(0,3);
             switch (randTask)
             {

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - redbutton
   - funnies
+  - Alerts
   layers:
   - Default
   - TransparentFX

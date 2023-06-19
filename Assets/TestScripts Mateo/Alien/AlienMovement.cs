@@ -8,7 +8,13 @@ public class AlienMovement : MonoBehaviour
     [Header("Movement Variables")]
     [Tooltip("Alien movement speed")]
     public float speed;
+    private float dir=-1;
+    private float prevDir;
     #endregion
+
+    void Start(){
+        prevDir= dir;
+    }
 
     private void FixedUpdate(){
         Walk();
@@ -21,9 +27,19 @@ public class AlienMovement : MonoBehaviour
     ///Return: None
     ///</summary>
     private void Walk (){
-        float dir = Input.GetAxis("Horizontal");
+        dir = Input.GetAxisRaw("Horizontal");
+
+        if (dir!=0 && prevDir != dir)
+        {
+            Debug.Log(dir +""+ prevDir);
+            transform.eulerAngles += new Vector3(0,180,0);
+            prevDir=dir;
+        }
+
         Vector3 step = new Vector3(1,0,0) * dir * Time.fixedDeltaTime * speed;
         transform.position += step;
+
+        
     }
 
 
