@@ -6,8 +6,12 @@ TagManager:
   tags:
   - redbutton
   - funnies
-  - Alerts
   - Ground
+  - alien
+  - alertcontainer
+  - greenalert
+  - yellowalert
+  - redalert
   layers:
   - Default
   - TransparentFX

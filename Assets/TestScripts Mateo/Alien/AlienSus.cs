@@ -19,8 +19,8 @@ public class AlienSus : MonoBehaviour
     ///Input: None<br/>
     ///Return: <paramref name="susPercentage"/> between 0 to 100 percent
     ///</summary>
-    public int HowSus(){
-        int susPercentage=100;
+    public float HowSus(){
+        float susPercentage=1.0f;
 
         if (alienStatus.GetForm()==AlienStatus.Form.corpse){
             susPercentage =  SusCorpse();
@@ -29,7 +29,6 @@ public class AlienSus : MonoBehaviour
         else if (alienStatus.GetForm() == AlienStatus.Form.duct){
             susPercentage = 0;
         }
-        Debug.Log(susPercentage);
         return susPercentage;
     }
 
@@ -38,14 +37,14 @@ public class AlienSus : MonoBehaviour
     ///Input: None<br/>
     ///Return: int <paramref name="susCorpsePercentage"/> between 5 to 70 percent
     ///</summary>
-    private int SusCorpse(){
-        int susCorpsePercentage = 70;
+    private float SusCorpse(){
+        float susCorpsePercentage = 0.7f;
 
         if (alienStatus.GetCorpseStatus()==AlienStatus.CorpseStatus.fresh){
-            susCorpsePercentage = 5;
+            susCorpsePercentage = 0.25f;
         }
         else if (alienStatus.GetCorpseStatus()==AlienStatus.CorpseStatus.decomposed){
-            susCorpsePercentage = 25;
+            susCorpsePercentage = 0.5f;
         }
         return susCorpsePercentage;
     }

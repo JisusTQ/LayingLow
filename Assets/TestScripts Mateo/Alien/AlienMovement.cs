@@ -31,7 +31,6 @@ public class AlienMovement : MonoBehaviour
 
         if (dir!=0 && prevDir != dir)
         {
-            Debug.Log(dir +""+ prevDir);
             transform.eulerAngles += new Vector3(0,180,0);
             prevDir=dir;
         }

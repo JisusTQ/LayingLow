@@ -135,8 +135,10 @@ GameObject:
   - component: {fileID: 131754507}
   - component: {fileID: 131754506}
   - component: {fileID: 131754505}
+  - component: {fileID: 131754511}
   - component: {fileID: 131754510}
   - component: {fileID: 131754509}
+  - component: {fileID: 131754512}
   m_Layer: 0
   m_Name: Scientist
   m_TagString: Untagged
@@ -249,7 +251,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkSpeed: 2
-  runSpeed: 0
+  runSpeed: 3
+--- !u!114 &131754511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 131754503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8b465855daa80b438099759f413023a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &131754512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 131754503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7051530784c9c5c42aeefcd779e3dacd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &353508158
 GameObject:
   m_ObjectHideFlags: 0
@@ -270,7 +296,7 @@ GameObject:
   - component: {fileID: 353508170}
   m_Layer: 0
   m_Name: Alien
-  m_TagString: Untagged
+  m_TagString: alien
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -447,7 +473,7 @@ GameObject:
   - component: {fileID: 456332393}
   m_Layer: 0
   m_Name: Alerts
-  m_TagString: Untagged
+  m_TagString: alertcontainer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -796,7 +822,7 @@ GameObject:
   - component: {fileID: 643919771}
   m_Layer: 0
   m_Name: Fine
-  m_TagString: Alerts
+  m_TagString: greenalert
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1396,7 +1422,7 @@ GameObject:
   - component: {fileID: 1365703079}
   m_Layer: 0
   m_Name: Danger
-  m_TagString: Alerts
+  m_TagString: redalert
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1688,7 +1714,7 @@ GameObject:
   - component: {fileID: 1846790488}
   m_Layer: 0
   m_Name: Alert
-  m_TagString: Alerts
+  m_TagString: yellowalert
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
