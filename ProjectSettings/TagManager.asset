@@ -12,6 +12,8 @@ TagManager:
   - greenalert
   - yellowalert
   - redalert
+  - Male
+  - Female
   layers:
   - Default
   - TransparentFX
