@@ -37,8 +37,6 @@ public class AlienMovement : MonoBehaviour
 
         Vector3 step = new Vector3(1,0,0) * dir * Time.fixedDeltaTime * speed;
         transform.position += step;
-
-        
     }
 
 

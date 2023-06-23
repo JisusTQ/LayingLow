@@ -95,7 +95,7 @@ public class ScientistMovement : MonoBehaviour
 
         Vector3 step= new Vector3(walkSpeed,0,0)*Time.fixedDeltaTime;
 
-        if(currentPos.x<-6 && currentPos.x>-13){
+        if(currentPos.x<4 && currentPos.x>-3){
             transform.position+=step*Dir;
             return;
         }

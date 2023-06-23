@@ -20,7 +20,6 @@ public class AlienAnimController : MonoBehaviour
 
     private void Start(){
         alienStatus= GetComponent<AlienStatus>();
-        alienAnimator = GetComponent<Animator>();
     }
 
     private void Update(){
@@ -36,11 +35,30 @@ public class AlienAnimController : MonoBehaviour
     private void AnimationChange(){
         if (alienStatus.GetForm()==AlienStatus.Form.alien){
             //Set whatever variable needed to change animation to alien
+            #region ActivateObjects
+            alienForm.SetActive(true);
+            maleScientist.SetActive(false);
+            femaleScientist.SetActive(false);
+            #endregion
+            alienAnimator = alienForm.GetComponent<Animator>();
+            Debug.Log("alien form active");
         }
         else if (alienStatus.GetForm()==AlienStatus.Form.duct){
             //Set whatever variable needed to change animation to duct
+            #region ActivateObjects
+            alienForm.SetActive(false);
+            maleScientist.SetActive(false);
+            femaleScientist.SetActive(false);
+            #endregion
         }
         else{
+            #region ActivateObjects
+            alienForm.SetActive(false);
+            maleScientist.SetActive(true);
+            femaleScientist.SetActive(false);
+            #endregion
+            alienAnimator = maleScientist.GetComponent<Animator>();
+            Debug.Log("scientist form active");
             CorpseAnimationChange();
         }
     }
@@ -61,4 +79,10 @@ public class AlienAnimController : MonoBehaviour
             //Set whatever variable needed to change animation to bones corpse
         }
     }
+
+    public void AnimationChange(string boolName, bool boolValue){
+        alienAnimator.SetBool(boolName, boolValue);
+    }
+
+
 }
