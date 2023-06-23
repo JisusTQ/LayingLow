@@ -14,6 +14,9 @@ TagManager:
   - redalert
   - Male
   - Female
+  - pcemoji
+  - flaskemoji
+  - gearemoji
   layers:
   - Default
   - TransparentFX

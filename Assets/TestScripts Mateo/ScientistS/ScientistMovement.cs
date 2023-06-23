@@ -34,6 +34,7 @@ public class ScientistMovement : MonoBehaviour
 
     # region status
     ScientistStatus status;
+    ScientistVisualAid visualAid;
     # endregion
     
     Animator scientistAnimator;
@@ -41,6 +42,7 @@ public class ScientistMovement : MonoBehaviour
     {   //Get Components
         redButton = GameObject.FindGameObjectWithTag("redbutton").GetComponent<Transform>();
         funActivities = GameObject.FindGameObjectsWithTag("funnies");
+        visualAid = GetComponent<ScientistVisualAid>();
         scientistAnimator = GetComponent<Animator>();
         status = GetComponent<ScientistStatus>();
         //Set Object Direction
@@ -133,12 +135,13 @@ public class ScientistMovement : MonoBehaviour
             Vector3 step = new Vector3(walkSpeed, 0, 0)* Time.fixedDeltaTime * Dir;
             transform.position += step;
         }
-        if (transform.position.x <(funActivities[chooseActivitie].transform.position.x+0.1) && transform.position.x >(funActivities[chooseActivitie].transform.position.x-0.1)){
+        if (transform.position.x <(funActivities[chooseActivitie].transform.position.x+0.1) && transform.position.x >(funActivities[chooseActivitie].transform.position.x-0.1) && !isWorking){
             #region animationChange
             scientistAnimator.SetBool("isIdle",true);
             scientistAnimator.SetBool("isWalking",false);
             scientistAnimator.SetBool("isRunning",false);
             #endregion
+            visualAid.WorkVisualControl();
             isWorking=true;
         }
     }
@@ -187,6 +190,7 @@ public class ScientistMovement : MonoBehaviour
         while(true){
             Debug.Log(status.GetTask());
             yield return new WaitForSeconds(5);
+            visualAid.NotWorkingAnymore();
             int randTask = Random.Range(0,3);
             switch (randTask)
             {
