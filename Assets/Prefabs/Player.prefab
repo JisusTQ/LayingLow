@@ -490,9 +490,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11188cff10914a34881bb4326f5acec1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alienForm: {fileID: 0}
-  maleScientist: {fileID: 0}
-  femaleScientist: {fileID: 0}
+  alienForm: {fileID: 3923180231817937977}
+  maleScientist: {fileID: 3923180232513764354}
+  femaleScientist: {fileID: 3923180231654776277}
   isPossessing: 0
 --- !u!1 &4229027880088930264
 GameObject:
@@ -807,7 +807,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 6f162c7e3dc0e1e4f82cb55bc6dd54db,
         type: 3}
       propertyPath: m_TagString
-      value: Male
+      value: alienmale
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f162c7e3dc0e1e4f82cb55bc6dd54db, type: 3}
@@ -944,7 +944,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 520f17a1ecc64974a8b9748999d3238a,
         type: 3}
       propertyPath: m_TagString
-      value: Female
+      value: femalealien
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 520f17a1ecc64974a8b9748999d3238a, type: 3}

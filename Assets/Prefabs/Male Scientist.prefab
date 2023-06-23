@@ -8348,6 +8348,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkSpeed: 1
   runSpeed: 3
+  isDead: 0
 --- !u!114 &919132149464841600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8410,6 +8411,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBeAttacked: 0
+  canBePossessed: 0
+  beingAttacked: 0
 --- !u!1 &8515541293493264839
 GameObject:
   m_ObjectHideFlags: 0
