@@ -36,11 +36,12 @@ public class ScientistMovement : MonoBehaviour
     ScientistStatus status;
     # endregion
     
-    
+    Animator scientistAnimator;
     void Start()
     {   //Get Components
         redButton = GameObject.FindGameObjectWithTag("redbutton").GetComponent<Transform>();
         funActivities = GameObject.FindGameObjectsWithTag("funnies");
+        scientistAnimator = GetComponent<Animator>();
         status = GetComponent<ScientistStatus>();
         //Set Object Direction
         SetDir();
@@ -84,11 +85,17 @@ public class ScientistMovement : MonoBehaviour
     ///</summary>
     private void Walk(){
 
+        #region animationChange
+        scientistAnimator.SetBool("isIdle",false);
+        scientistAnimator.SetBool("isWalking",true);
+        scientistAnimator.SetBool("isRunning",false);
+        #endregion
+        
         Vector3 currentPos = transform.position;
 
         Vector3 step= new Vector3(walkSpeed,0,0)*Time.fixedDeltaTime;
 
-        if(currentPos.x<10 && currentPos.x>-10){
+        if(currentPos.x<-6 && currentPos.x>-13){
             transform.position+=step*Dir;
             return;
         }
@@ -113,6 +120,11 @@ public class ScientistMovement : MonoBehaviour
 
         if (!isWorking)
         {
+            #region animationChange
+            scientistAnimator.SetBool("isIdle",false);
+            scientistAnimator.SetBool("isWalking",true);
+            scientistAnimator.SetBool("isRunning",false);
+            #endregion
             float distanceToWork = funActivities[chooseActivitie].transform.position.x - transform.position.x;
 
            Dir = (distanceToWork<0)? - 1:1;
@@ -122,6 +134,11 @@ public class ScientistMovement : MonoBehaviour
             transform.position += step;
         }
         if (transform.position.x <(funActivities[chooseActivitie].transform.position.x+0.1) && transform.position.x >(funActivities[chooseActivitie].transform.position.x-0.1)){
+            #region animationChange
+            scientistAnimator.SetBool("isIdle",true);
+            scientistAnimator.SetBool("isWalking",false);
+            scientistAnimator.SetBool("isRunning",false);
+            #endregion
             isWorking=true;
         }
     }
@@ -132,6 +149,13 @@ public class ScientistMovement : MonoBehaviour
     ///Return: None
     ///</summary>
     private void Run(){
+
+        #region animationChange
+        scientistAnimator.SetBool("isIdle",false);
+        scientistAnimator.SetBool("isWalking",false);
+        scientistAnimator.SetBool("isRunning",true);
+        #endregion
+        
         float distanceToRedButton = redButton.position.x - transform.position.x;
 
         Dir = (distanceToRedButton<0)?-1:1;
@@ -191,6 +215,13 @@ public class ScientistMovement : MonoBehaviour
             }
             else if (status.GetTask()==ScientistStatus.Task.work){
                 Work();
+            }
+            else{
+                #region animationChange
+                scientistAnimator.SetBool("isIdle",true);
+                scientistAnimator.SetBool("isWalking",false);
+                scientistAnimator.SetBool("isRunning",false);
+                #endregion
             }
             return;
         }

@@ -8,7 +8,7 @@ public class AlienMovement : MonoBehaviour
     [Header("Movement Variables")]
     [Tooltip("Alien movement speed")]
     public float speed;
-    private float dir=-1;
+    private float dir=1;
     private float prevDir;
     #endregion
 
