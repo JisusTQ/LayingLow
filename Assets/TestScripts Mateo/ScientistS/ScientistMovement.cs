@@ -164,7 +164,14 @@ public class ScientistMovement : MonoBehaviour
         Vector3 step = new Vector3(runSpeed, 0, 0)* Time.fixedDeltaTime * Dir;
         transform.position += step;
 
-        if (transform.position.x <(redButton.transform.position.x+0.1) && transform.position.x >(redButton.transform.position.x-0.1)){
+        if (transform.position.x <(redButton.transform.position.x+0.15) && transform.position.x >(redButton.transform.position.x-0.15)){
+
+            #region animationChange
+            scientistAnimator.SetBool("isIdle",false);
+            scientistAnimator.SetBool("isWalking",false);
+            scientistAnimator.SetBool("isRunning",false);
+            scientistAnimator.SetBool("isPushing",true);
+            #endregion
             runSpeed=0;
         }
     }

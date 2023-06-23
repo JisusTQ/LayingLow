@@ -9,6 +9,15 @@ public class AlienAnimController : MonoBehaviour
     AlienStatus alienStatus;
     Animator alienAnimator;
 
+    #region AlienForms
+    [SerializeField]
+    GameObject alienForm;
+    [SerializeField]
+    GameObject maleScientist;
+    [SerializeField]
+    GameObject femaleScientist;
+    #endregion
+
     private void Start(){
         alienStatus= GetComponent<AlienStatus>();
         alienAnimator = GetComponent<Animator>();
