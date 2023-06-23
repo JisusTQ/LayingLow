@@ -5,9 +5,10 @@ using UnityEngine;
 public class ScientistVisualAid : MonoBehaviour
 {
     #region Alerts
-    GameObject greenAlert;
     GameObject yellowAlert;
     GameObject redAlert;
+    GameObject[] workEmoji =new GameObject[3]; // [0] = pc, [1] = gear, [2] = flask
+
     #endregion
 
     #region Status
@@ -19,7 +20,6 @@ public class ScientistVisualAid : MonoBehaviour
         status = GetComponent<ScientistStatus>();
         prevStatus = status.GetSus();
         GetVisualAlerts();
-        greenAlert.SetActive(true);
         yellowAlert.SetActive(false);
         redAlert.SetActive(false);
     }
@@ -47,21 +47,28 @@ public class ScientistVisualAid : MonoBehaviour
     }
 
     ///<summary>
-    ///Description: Once we have the container transform (<paramref name="aidContainer"/>) based on the tags of its childs, we retrieve the <paramref name="greenAlert"/>, <paramref name="yellowAlert"/>, <paramref name="redAlert"/> objects.<br/>
+    ///Description: Once we have the container transform (<paramref name="aidContainer"/>) based on the tags of its childs, we retrieve the <paramref name="greenAlert"/>, <paramref name="yellowAlert"/>, <paramref name="redAlert"/> objects and the <paramref name="workEmoji"/> list.<br/>
     ///Input: Transform <paramref name="aidContainer"/><br/>
     ///Return: None<br/>
     ///</summary>
     private void GetVisualAlerts2(Transform aidContainer){
         for (int i = 0; i < aidContainer.childCount; i++)
         {
-            if (aidContainer.GetChild(i).tag == "greenalert"){
-                greenAlert = aidContainer.GetChild(i).gameObject;
-            }
-            else if (aidContainer.GetChild(i).tag == "yellowalert"){
+            if (aidContainer.GetChild(i).tag == "yellowalert"){
                 yellowAlert = aidContainer.GetChild(i).gameObject;
             }
             else if (aidContainer.GetChild(i).tag == "redalert"){
                 redAlert = aidContainer.GetChild(i).gameObject;
+            }
+            else if (aidContainer.GetChild(i).tag == "pcemoji"){
+                workEmoji[0] = aidContainer.GetChild(i).gameObject;
+            }
+            else if (aidContainer.GetChild(i).tag == "gearemoji"){
+                workEmoji[1] = aidContainer.GetChild(i).gameObject;
+
+            }
+            else if (aidContainer.GetChild(i).tag == "flaskemoji"){
+                workEmoji[2] = aidContainer.GetChild(i).gameObject;
             }
         }
     }
@@ -76,17 +83,54 @@ public class ScientistVisualAid : MonoBehaviour
             switch (status.GetSus())
             {
                 case ScientistStatus.Suspicion.alert:
-                    greenAlert.SetActive(false);
+                    for (int i = 0; i < workEmoji.Length; i++)
+                    {
+                        workEmoji[i].SetActive(false);
+                    }
                     yellowAlert.SetActive(true);
                     redAlert.SetActive(false);
                 break;
                 case ScientistStatus.Suspicion.discovered:
-                    greenAlert.SetActive(false);
                     yellowAlert.SetActive(false);
                     redAlert.SetActive(true);
                 break;
             }
             prevStatus=status.GetSus();
+        }
+    }
+
+    ///<summary>
+    ///Description: Public function to use in ScientistMovement script to show a random visual aid when the scientist is working and the status is none.<br/>
+    ///Input: None<br/>
+    ///Return: None
+    ///</summary>
+    public void WorkVisualControl(){
+        int randomShow = Random.Range(0, workEmoji.Length);
+
+        if (status.GetSus() != ScientistStatus.Suspicion.none){
+            return;
+        }
+
+        for (int i = 0; i < workEmoji.Length; i++)
+        {
+            if (i == randomShow){
+                workEmoji[i].SetActive(true);
+            }
+            else{
+                workEmoji[i].SetActive(false);
+            }
+        }
+    }
+
+    ///<summary>
+    ///Description: Public function to remove the working visual aid
+    ///Input: None<br/>
+    ///Return: None
+    ///</summary>
+    public void NotWorkingAnymore(){
+        for (int i = 0; i < workEmoji.Length; i++)
+        {
+                workEmoji[i].SetActive(false);
         }
     }
 

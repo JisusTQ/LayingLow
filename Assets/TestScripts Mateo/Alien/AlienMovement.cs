@@ -12,7 +12,10 @@ public class AlienMovement : MonoBehaviour
     private float prevDir;
     #endregion
 
+    AlienAnimController animController;
+
     void Start(){
+        animController=GetComponent<AlienAnimController>();
         prevDir= dir;
     }
 
@@ -33,6 +36,12 @@ public class AlienMovement : MonoBehaviour
         {
             transform.eulerAngles += new Vector3(0,180,0);
             prevDir=dir;
+        }
+        if (dir==0){
+            animController.AnimationChange("isWalking", false);
+        }
+        else{
+            animController.AnimationChange("isWalking", true);
         }
 
         Vector3 step = new Vector3(1,0,0) * dir * Time.fixedDeltaTime * speed;

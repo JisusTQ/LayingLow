@@ -8,6 +8,7 @@ public class AlienAnimController : MonoBehaviour
 
     AlienStatus alienStatus;
     Animator alienAnimator;
+    bool isAttacking;
 
     #region AlienForms
     [SerializeField]
@@ -20,6 +21,7 @@ public class AlienAnimController : MonoBehaviour
 
     private void Start(){
         alienStatus= GetComponent<AlienStatus>();
+        AnimationChange();
     }
 
     private void Update(){
@@ -83,6 +85,8 @@ public class AlienAnimController : MonoBehaviour
     public void AnimationChange(string boolName, bool boolValue){
         alienAnimator.SetBool(boolName, boolValue);
     }
+
+
 
 
 }
