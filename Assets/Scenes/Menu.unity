@@ -950,7 +950,7 @@ MonoBehaviour:
         m_MethodName: PlaySFX
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: 3fa19280ae028bc41b7a2eb1da690816,
+          m_ObjectArgument: {fileID: 8300000, guid: 3e56eea4b0f58cd448313c8cb38cdfb7,
             type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
@@ -1097,7 +1097,7 @@ MonoBehaviour:
         m_MethodName: PlaySFX
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: 3fa19280ae028bc41b7a2eb1da690816,
+          m_ObjectArgument: {fileID: 8300000, guid: 3e56eea4b0f58cd448313c8cb38cdfb7,
             type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
@@ -1842,7 +1842,7 @@ MonoBehaviour:
         m_MethodName: PlaySFX
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: 3fa19280ae028bc41b7a2eb1da690816,
+          m_ObjectArgument: {fileID: 8300000, guid: 3e56eea4b0f58cd448313c8cb38cdfb7,
             type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
@@ -2751,7 +2751,7 @@ MonoBehaviour:
         m_MethodName: PlaySFX
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: 3fa19280ae028bc41b7a2eb1da690816,
+          m_ObjectArgument: {fileID: 8300000, guid: 3e56eea4b0f58cd448313c8cb38cdfb7,
             type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
@@ -2909,7 +2909,7 @@ MonoBehaviour:
         m_MethodName: PlaySFX
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: 3fa19280ae028bc41b7a2eb1da690816,
+          m_ObjectArgument: {fileID: 8300000, guid: 3e56eea4b0f58cd448313c8cb38cdfb7,
             type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
@@ -3063,8 +3063,8 @@ MonoBehaviour:
   musicSource: {fileID: 1758364876}
   SFXSource: {fileID: 187824726}
   gameplay: {fileID: 0}
-  menu: {fileID: 0}
-  click: {fileID: 8300000, guid: 3fa19280ae028bc41b7a2eb1da690816, type: 3}
+  menu: {fileID: 8300000, guid: be5515f852e01534db71aca32fad6f75, type: 3}
+  click: {fileID: 8300000, guid: 3e56eea4b0f58cd448313c8cb38cdfb7, type: 3}
   walking: {fileID: 0}
   down: {fileID: 0}
   scientist: {fileID: 0}
