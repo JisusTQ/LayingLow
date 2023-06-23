@@ -236,6 +236,9 @@ GameObject:
   - component: {fileID: 2550692841338777685}
   - component: {fileID: 1540724238}
   - component: {fileID: 1540724237}
+  - component: {fileID: 206062495}
+  - component: {fileID: 206062508}
+  - component: {fileID: 206062509}
   m_Layer: 0
   m_Name: Player
   m_TagString: alien
@@ -448,6 +451,49 @@ MonoBehaviour:
   alienForm: {fileID: 3923180231817937977}
   maleScientist: {fileID: 3923180232513764354}
   femaleScientist: {fileID: 3923180231654776277}
+--- !u!114 &206062495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4229027879480225466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c8798d57b460d8448bc7a122335d50a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  room: 0
+--- !u!114 &206062508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4229027879480225466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7ee7c13b6b5e694b838053c82de2d51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alienObj: {fileID: 3923180231817937977}
+  isAttacking: 0
+--- !u!114 &206062509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4229027879480225466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11188cff10914a34881bb4326f5acec1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alienForm: {fileID: 3923180231817937977}
+  maleScientist: {fileID: 3923180232513764354}
+  femaleScientist: {fileID: 3923180231654776277}
+  isPossessing: 0
 --- !u!1 &4229027880088930264
 GameObject:
   m_ObjectHideFlags: 0
@@ -761,7 +807,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 6f162c7e3dc0e1e4f82cb55bc6dd54db,
         type: 3}
       propertyPath: m_TagString
-      value: Male
+      value: alienmale
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f162c7e3dc0e1e4f82cb55bc6dd54db, type: 3}
@@ -781,7 +827,7 @@ Animator:
   m_GameObject: {fileID: 3923180232513764354}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d49539434654cfa498bb42aa09f73f41, type: 2}
+  m_Controller: {fileID: 9100000, guid: da252ff120d150147b4e5762c56d532f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -898,7 +944,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 520f17a1ecc64974a8b9748999d3238a,
         type: 3}
       propertyPath: m_TagString
-      value: Female
+      value: femalealien
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 520f17a1ecc64974a8b9748999d3238a, type: 3}
@@ -918,7 +964,7 @@ Animator:
   m_GameObject: {fileID: 3923180231654776277}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 962a0de3c796e2046a0a8f384fffd679, type: 2}
+  m_Controller: {fileID: 9100000, guid: f399c2b77853a454d8e6b54d59d6dc9d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

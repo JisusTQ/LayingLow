@@ -25,7 +25,7 @@ public class ScientistMovement : MonoBehaviour
     #region ints
     int chooseActivitie = 0;// index of the object where the character will "work" on
     #endregion
-   #region Screen Objects
+    #region Screen Objects
     
     GameObject[] funActivities; //stores the positions of every activity the scientist can perform if they are unaware of danger and decide to work
     Transform redButton; // if the scientist discovers the alien, here it will call security.
@@ -36,11 +36,19 @@ public class ScientistMovement : MonoBehaviour
     ScientistStatus status;
     ScientistVisualAid visualAid;
     # endregion
+
+    GettingAttacked isBeingAttacked; // If the scientist is being attacked by the alien, he can't do anything
+
+    bool isdying;
+
+    public bool isDead;
+
     
     Animator scientistAnimator;
     void Start()
     {   //Get Components
         redButton = GameObject.FindGameObjectWithTag("redbutton").GetComponent<Transform>();
+        isBeingAttacked = GetComponent<GettingAttacked>();
         funActivities = GameObject.FindGameObjectsWithTag("funnies");
         visualAid = GetComponent<ScientistVisualAid>();
         scientistAnimator = GetComponent<Animator>();
@@ -53,7 +61,14 @@ public class ScientistMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        TaskExe();
+        if(!isBeingAttacked.beingAttacked){
+            TaskExe();
+        }
+        else{
+            if(!isdying){
+                StartCoroutine(GotAttacked());
+            }
+        }
     }
 
 
@@ -188,7 +203,6 @@ public class ScientistMovement : MonoBehaviour
     ///</summary>
     IEnumerator Choosetask(){
         while(true){
-            Debug.Log(status.GetTask());
             yield return new WaitForSeconds(5);
             visualAid.NotWorkingAnymore();
             int randTask = Random.Range(0,3);
@@ -239,4 +253,11 @@ public class ScientistMovement : MonoBehaviour
         Run();
     }
 
+    IEnumerator GotAttacked(){
+        isdying=true;
+        scientistAnimator.SetBool("isBeingAttacked", true);
+        yield return new WaitForSeconds(1.3f);
+        scientistAnimator.SetBool("isDead", true);
+        isDead = true;
+    }
 }
