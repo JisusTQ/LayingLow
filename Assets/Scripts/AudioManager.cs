@@ -44,6 +44,12 @@ public class AudioManager : MonoBehaviour
             musicSource.clip = comic;
             musicSource.Play();
         }
+        if (SceneManager.GetActiveScene().name == "Level")
+        {
+            musicSource.Pause();
+            musicSource.clip = gameplay;
+            musicSource.Play();
+        }
     }
 
     public void PlaySFX(AudioClip clip)
