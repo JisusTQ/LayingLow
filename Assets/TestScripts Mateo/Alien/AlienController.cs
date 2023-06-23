@@ -6,10 +6,12 @@ public class AlienController : MonoBehaviour
 {
     AlienStatus alienStatus;
     AlienSus alienSus;
+    CanPosses alienposses;
 
     void Start(){
         alienStatus = GetComponent<AlienStatus>();
         alienSus = GetComponent<AlienSus>();
+        alienposses = GetComponent<CanPosses>();
     }
     void Update()
     {
@@ -24,24 +26,30 @@ public class AlienController : MonoBehaviour
     private void TempChangeStatus(){
         if (Input.GetKeyDown("z")){
             alienStatus.SetForm(AlienStatus.Form.alien);
-            Debug.Log(alienStatus.GetForm());
             alienSus.HowSus();
         }
         else if (Input.GetKeyDown("x")){
-            alienStatus.SetForm(AlienStatus.Form.corpse);
-            Debug.Log(alienStatus.GetForm());
+            string bodyTaken = alienposses.Posses();
+            if (bodyTaken=="male")
+            {
+                alienStatus.SetForm(AlienStatus.Form.malecorpse);
+            }
+            else if(bodyTaken == "female")
+            {
+                alienStatus.SetForm(AlienStatus.Form.femalecorpse);
+            }
             alienSus.HowSus();
 
         }
-        else if(Input.GetKeyDown("c")){
+        else if(Input.GetKeyDown("c") && alienStatus.GetForm()!=AlienStatus.Form.duct){
             alienStatus.SetForm(AlienStatus.Form.duct);
             Debug.Log(alienStatus.GetForm());
             alienSus.HowSus();
 
         }
-
-        if (alienStatus.GetForm()==AlienStatus.Form.corpse){
-            TempChangeCorpse();
+        else if (Input.GetKeyDown("c") && alienStatus.GetForm()==AlienStatus.Form.duct){
+            alienStatus.SetForm(AlienStatus.Form.alien);
+            alienSus.HowSus();
         }
     }
 

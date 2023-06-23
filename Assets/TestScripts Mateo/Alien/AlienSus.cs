@@ -22,7 +22,7 @@ public class AlienSus : MonoBehaviour
     public float HowSus(){
         float susPercentage=1.0f;
 
-        if (alienStatus.GetForm()==AlienStatus.Form.corpse){
+        if (alienStatus.GetForm()==AlienStatus.Form.malecorpse || alienStatus.GetForm()==AlienStatus.Form.femalecorpse){
             susPercentage =  SusCorpse();
         }
 

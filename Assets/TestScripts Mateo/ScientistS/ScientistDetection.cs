@@ -5,6 +5,7 @@ using UnityEngine;
 public class ScientistDetection : MonoBehaviour
 {
     #region Directions
+    WhereAmI myRoom;
     ScientistMovement movementInfo;
     #endregion
 
@@ -16,6 +17,7 @@ public class ScientistDetection : MonoBehaviour
     #region Alien Info
     GameObject alien;
     AlienSus aliensSuspicion;
+    WhereAmI alienRoom;
     #endregion
 
     #region How Suspicious
@@ -28,9 +30,11 @@ public class ScientistDetection : MonoBehaviour
     void Start(){
         suspicion = 0;
         currentSuspicion =0;
-        movementInfo = GetComponent<ScientistMovement>();
         alien = GameObject.FindGameObjectWithTag("alien");
+        movementInfo = GetComponent<ScientistMovement>();
         aliensSuspicion = alien.GetComponent<AlienSus>();
+        alienRoom = alien.GetComponent<WhereAmI>();
+        myRoom = GetComponent<WhereAmI>();
         status = GetComponent<ScientistStatus>();
     }
     void FixedUpdate(){
@@ -51,12 +55,11 @@ public class ScientistDetection : MonoBehaviour
         bool lookingAlienLeft = (alienDir<0 && movementInfo.Dir<0);
         bool lookingAlienRight = (alienDir>0 && movementInfo.Dir>0);
         isSeen = (lookingAlienLeft || lookingAlienRight);
-        if (isSeen && !okSeen){
+        if (isSeen && !okSeen && (alienRoom.room==myRoom.room)){
             okSeen = true;
             suspicion = aliensSuspicion.HowSus();
             currentSuspicion = suspicion;
             StatusChange();
-            Debug.Log("seen" + suspicion);
         }
         if (!isSeen){
             okSeen = false;
@@ -92,7 +95,6 @@ public class ScientistDetection : MonoBehaviour
             status.SetSus(ScientistStatus.Suspicion.discovered);
         }
 
-        Debug.Log(status.GetSus());
     }
 
 }

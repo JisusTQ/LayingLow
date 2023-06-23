@@ -17,6 +17,8 @@ TagManager:
   - pcemoji
   - flaskemoji
   - gearemoji
+  - alienmale
+  - femalealien
   layers:
   - Default
   - TransparentFX
