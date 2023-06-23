@@ -5,6 +5,13 @@ using UnityEngine;
 public class ScientistStatus : MonoBehaviour
 {
 
+    //Based on the status, the scientists will change animations like this 
+    // 0- Idle, or working
+    // 1- Walk
+    // 2 - run
+    // 3 - push button
+    
+
     public enum Suspicion{
         none,
         alert,

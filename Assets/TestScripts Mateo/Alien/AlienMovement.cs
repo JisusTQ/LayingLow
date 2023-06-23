@@ -8,7 +8,7 @@ public class AlienMovement : MonoBehaviour
     [Header("Movement Variables")]
     [Tooltip("Alien movement speed")]
     public float speed;
-    private float dir=-1;
+    private float dir=1;
     private float prevDir;
     #endregion
 
@@ -37,8 +37,6 @@ public class AlienMovement : MonoBehaviour
 
         Vector3 step = new Vector3(1,0,0) * dir * Time.fixedDeltaTime * speed;
         transform.position += step;
-
-        
     }
 
 
