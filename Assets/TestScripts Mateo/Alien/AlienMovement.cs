@@ -13,13 +13,18 @@ public class AlienMovement : MonoBehaviour
     #endregion
 
     AlienAnimController animController;
+    CanAttack isAttacking;
+    AlienStatus alienStatus;
 
     void Start(){
+        isAttacking = GetComponent<CanAttack>();
         animController=GetComponent<AlienAnimController>();
+        alienStatus = GetComponent<AlienStatus>();
         prevDir= dir;
     }
 
     private void FixedUpdate(){
+
         Walk();
     }
 
@@ -32,7 +37,7 @@ public class AlienMovement : MonoBehaviour
     private void Walk (){
         dir = Input.GetAxisRaw("Horizontal");
 
-        if (dir!=0 && prevDir != dir)
+        if (dir!=0 && prevDir != dir && !isAttacking.isAttacking&& alienStatus.GetForm()!=AlienStatus.Form.duct)
         {
             transform.eulerAngles += new Vector3(0,180,0);
             prevDir=dir;
@@ -44,8 +49,10 @@ public class AlienMovement : MonoBehaviour
             animController.AnimationChange("isWalking", true);
         }
 
-        Vector3 step = new Vector3(1,0,0) * dir * Time.fixedDeltaTime * speed;
-        transform.position += step;
+        if (!isAttacking.isAttacking && alienStatus.GetForm()!=AlienStatus.Form.duct){
+            Vector3 step = new Vector3(1,0,0) * dir * Time.fixedDeltaTime * speed;
+            transform.position += step;
+        }
     }
 
 

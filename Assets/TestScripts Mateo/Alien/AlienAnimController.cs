@@ -19,8 +19,10 @@ public class AlienAnimController : MonoBehaviour
     GameObject femaleScientist;
     #endregion
 
+    CanPosses alienPosses;
     private void Start(){
         alienStatus= GetComponent<AlienStatus>();
+        alienPosses = GetComponent<CanPosses>();
         AnimationChange();
     }
 
@@ -43,7 +45,24 @@ public class AlienAnimController : MonoBehaviour
             femaleScientist.SetActive(false);
             #endregion
             alienAnimator = alienForm.GetComponent<Animator>();
-            Debug.Log("alien form active");
+        }
+        else if (alienStatus.GetForm()==AlienStatus.Form.malecorpse){
+            #region ActivateObjects
+            alienForm.SetActive(false);
+            maleScientist.SetActive(true);
+            femaleScientist.SetActive(false);
+            #endregion
+            alienAnimator = maleScientist.GetComponent<Animator>();
+            CorpseAnimationChange();
+        }
+        else if (alienStatus.GetForm()==AlienStatus.Form.femalecorpse){
+            #region ActivateObjects
+            alienForm.SetActive(false);
+            maleScientist.SetActive(false);
+            femaleScientist.SetActive(true);
+            #endregion
+            alienAnimator = femaleScientist.GetComponent<Animator>();
+            CorpseAnimationChange();
         }
         else if (alienStatus.GetForm()==AlienStatus.Form.duct){
             //Set whatever variable needed to change animation to duct
@@ -53,16 +72,7 @@ public class AlienAnimController : MonoBehaviour
             femaleScientist.SetActive(false);
             #endregion
         }
-        else{
-            #region ActivateObjects
-            alienForm.SetActive(false);
-            maleScientist.SetActive(true);
-            femaleScientist.SetActive(false);
-            #endregion
-            alienAnimator = maleScientist.GetComponent<Animator>();
-            Debug.Log("scientist form active");
-            CorpseAnimationChange();
-        }
+        
     }
 
     ///<summary>
