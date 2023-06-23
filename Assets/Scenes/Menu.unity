@@ -3062,10 +3062,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicSource: {fileID: 1758364876}
   SFXSource: {fileID: 187824726}
-  gameplay: {fileID: 0}
+  gameplay: {fileID: 8300000, guid: c8f6ec9033492ab4bbccf72bccf81720, type: 3}
   menu: {fileID: 8300000, guid: be5515f852e01534db71aca32fad6f75, type: 3}
   click: {fileID: 8300000, guid: 3e56eea4b0f58cd448313c8cb38cdfb7, type: 3}
-  comic: {fileID: 0}
+  comic: {fileID: 8300000, guid: c6ba9288e97011442865ec8206227a01, type: 3}
   scientist: {fileID: 0}
   death: {fileID: 0}
   convert: {fileID: 0}
