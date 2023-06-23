@@ -1089,7 +1089,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Level
+          m_StringArgument: Comic
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 2060019032}
@@ -3065,8 +3065,7 @@ MonoBehaviour:
   gameplay: {fileID: 0}
   menu: {fileID: 8300000, guid: be5515f852e01534db71aca32fad6f75, type: 3}
   click: {fileID: 8300000, guid: 3e56eea4b0f58cd448313c8cb38cdfb7, type: 3}
-  walking: {fileID: 0}
-  down: {fileID: 0}
+  comic: {fileID: 0}
   scientist: {fileID: 0}
   death: {fileID: 0}
   convert: {fileID: 0}
