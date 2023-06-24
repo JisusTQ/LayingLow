@@ -39,6 +39,8 @@ public class ScientistMovement : MonoBehaviour
 
     GettingAttacked isBeingAttacked; // If the scientist is being attacked by the alien, he can't do anything
 
+    GameObject alien;
+
     bool isdying;
 
     public bool isDead;
@@ -50,6 +52,7 @@ public class ScientistMovement : MonoBehaviour
         redButton = GameObject.FindGameObjectWithTag("redbutton").GetComponent<Transform>();
         isBeingAttacked = GetComponent<GettingAttacked>();
         funActivities = GameObject.FindGameObjectsWithTag("funnies");
+        alien = GameObject.FindGameObjectWithTag("alien");
         visualAid = GetComponent<ScientistVisualAid>();
         scientistAnimator = GetComponent<Animator>();
         status = GetComponent<ScientistStatus>();
@@ -174,24 +177,40 @@ public class ScientistMovement : MonoBehaviour
         scientistAnimator.SetBool("isRunning",true);
         #endregion
         
-        float distanceToRedButton = redButton.position.x - transform.position.x;
+       
+        // float distanceToRedButton = alien.transform.position.x - transform.position.x;
 
-        Dir = (distanceToRedButton<0)?-1:1;
-        NewDir();
+        // Dir = (distanceToRedButton<0)?-1:1;
+        // NewDir();
 
-        Vector3 step = new Vector3(runSpeed, 0, 0)* Time.fixedDeltaTime * Dir;
-        transform.position += step;
+        // Vector3 step = new Vector3(runSpeed, 0, 0)* Time.fixedDeltaTime * Dir;
 
-        if (transform.position.x <(redButton.transform.position.x+0.15) && transform.position.x >(redButton.transform.position.x-0.15)){
+        Vector3 currentPos = transform.position;
+        Vector3 step= new Vector3(runSpeed,0,0)*Time.fixedDeltaTime;
 
-            #region animationChange
-            scientistAnimator.SetBool("isIdle",false);
-            scientistAnimator.SetBool("isWalking",false);
-            scientistAnimator.SetBool("isRunning",false);
-            scientistAnimator.SetBool("isPushing",true);
-            #endregion
-            runSpeed=0;
+
+
+        if(currentPos.x<4 && currentPos.x>-3){
+            transform.position+=step*Dir;
+            return;
         }
+
+        Dir *=-1;
+        NewDir();
+        transform.position +=step*Dir;
+
+        // transform.position +=step*Dir;
+
+        // if (transform.position.x <(redButton.transform.position.x+0.15) && transform.position.x >(redButton.transform.position.x-0.15)){
+
+        //     #region animationChange
+        //     scientistAnimator.SetBool("isIdle",false);
+        //     scientistAnimator.SetBool("isWalking",false);
+        //     scientistAnimator.SetBool("isRunning",false);
+        //     scientistAnimator.SetBool("isPushing",true);
+        //     #endregion
+        //     runSpeed=0;
+        // }
     }
 
     ///<summary>
