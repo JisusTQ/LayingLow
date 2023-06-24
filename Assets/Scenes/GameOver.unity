@@ -1122,6 +1122,7 @@ MonoBehaviour:
   death: {fileID: 0}
   convert: {fileID: 0}
   victory: {fileID: 0}
+  gameOver: {fileID: 8300000, guid: 3f75f1e0bda011f4ba3e64c6ce5d4fe8, type: 3}
 --- !u!4 &1513195988
 Transform:
   m_ObjectHideFlags: 0

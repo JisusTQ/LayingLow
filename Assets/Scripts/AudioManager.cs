@@ -16,6 +16,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip death;
     public AudioClip convert;
     public AudioClip victory;
+    public AudioClip gameOver;
 
     /*private void Awake()
     {
@@ -48,6 +49,12 @@ public class AudioManager : MonoBehaviour
         {
             musicSource.Pause();
             musicSource.clip = gameplay;
+            musicSource.Play();
+        }
+        if (SceneManager.GetActiveScene().name == "GameOver")
+        {
+            musicSource.Pause();
+            musicSource.clip = gameOver;
             musicSource.Play();
         }
     }
