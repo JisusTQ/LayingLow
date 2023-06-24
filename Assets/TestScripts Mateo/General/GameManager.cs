@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     GameObject alien;
+    AlienStatus alienStatus;
     // Start is called before the first frame update
     void Start()
     {
