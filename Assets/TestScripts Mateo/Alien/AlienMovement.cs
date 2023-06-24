@@ -15,6 +15,7 @@ public class AlienMovement : MonoBehaviour
     AlienAnimController animController;
     CanAttack isAttacking;
     AlienStatus alienStatus;
+    [SerializeField] GameObject camara;
 
     void Start(){
         isAttacking = GetComponent<CanAttack>();
@@ -41,6 +42,7 @@ public class AlienMovement : MonoBehaviour
         {
             transform.eulerAngles += new Vector3(0,180,0);
             prevDir=dir;
+            camara.transform.eulerAngles -= new Vector3(0, 180, 0);
         }
         if (dir==0){
             animController.AnimationChange("isWalking", false);
