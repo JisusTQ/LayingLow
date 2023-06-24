@@ -58,7 +58,6 @@ public class ScientistDetection : MonoBehaviour
         bool lookingAlienRight = (alienDir>0 && movementInfo.Dir>0);
         isSeen = (lookingAlienLeft || lookingAlienRight);
         if(!test){
-            Debug.Log(alienRoom.room==myRoom.room);
             test=true;
         }
         if (isSeen && !okSeen && (alienRoom.room==myRoom.room)){

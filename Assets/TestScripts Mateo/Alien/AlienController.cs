@@ -27,11 +27,13 @@ public class AlienController : MonoBehaviour
     ///Return: None
     ///</summary>
     private void TempChangeStatus(){
-        if (gameManager.GetComponent<GameManager>().isCorpse){
+        if (!gameManager.GetComponent<GameManager>().isCorpse){
             alienStatus.SetForm(AlienStatus.Form.alien);
             alienSus.HowSus();
+            Debug.Log("here");
         }
-        else if (Input.GetKeyDown("x")){
+        if (Input.GetKeyDown("x")){
+            Debug.Log("here2");
             string bodyTaken = alienposses.Posses();
             if (bodyTaken=="male")
             {

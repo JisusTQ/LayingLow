@@ -27,7 +27,6 @@ public class GameManager : MonoBehaviour
 
 
     private void TimeMelting(){
-        Debug.Log(timeRemaining);
         timeRemaining-= Time.fixedDeltaTime;
     }
 

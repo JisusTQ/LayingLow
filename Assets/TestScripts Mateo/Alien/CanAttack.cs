@@ -61,7 +61,6 @@ public class CanAttack : MonoBehaviour
             alienAnimator.SetBool("isAttacking", true);
             isAttacking = true;
             StartCoroutine(RunAnimation());
-            Debug.Log("attack");
         }
     }
 
