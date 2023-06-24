@@ -8,7 +8,10 @@ public class AlienController : MonoBehaviour
     AlienSus alienSus;
     CanPosses alienposses;
 
+    GameObject gameManager;
+
     void Start(){
+        gameManager = GameObject.FindGameObjectWithTag("gamemanager");
         alienStatus = GetComponent<AlienStatus>();
         alienSus = GetComponent<AlienSus>();
         alienposses = GetComponent<CanPosses>();
@@ -24,7 +27,7 @@ public class AlienController : MonoBehaviour
     ///Return: None
     ///</summary>
     private void TempChangeStatus(){
-        if (Input.GetKeyDown("z")){
+        if (gameManager.GetComponent<GameManager>().isCorpse){
             alienStatus.SetForm(AlienStatus.Form.alien);
             alienSus.HowSus();
         }
@@ -32,25 +35,29 @@ public class AlienController : MonoBehaviour
             string bodyTaken = alienposses.Posses();
             if (bodyTaken=="male")
             {
+                gameManager.GetComponent<GameManager>().isCorpse = true;
+                gameManager.GetComponent<GameManager>().corpseActivates= true;
                 alienStatus.SetForm(AlienStatus.Form.malecorpse);
             }
             else if(bodyTaken == "female")
             {
+                gameManager.GetComponent<GameManager>().isCorpse= true;
+                gameManager.GetComponent<GameManager>().corpseActivates= true;
                 alienStatus.SetForm(AlienStatus.Form.femalecorpse);
             }
             alienSus.HowSus();
 
         }
-        else if(Input.GetKeyDown("c") && alienStatus.GetForm()!=AlienStatus.Form.duct){
-            alienStatus.SetForm(AlienStatus.Form.duct);
-            Debug.Log(alienStatus.GetForm());
-            alienSus.HowSus();
+        // else if(Input.GetKeyDown("c") && alienStatus.GetForm()!=AlienStatus.Form.duct){
+        //     alienStatus.SetForm(AlienStatus.Form.duct);
+        //     Debug.Log(alienStatus.GetForm());
+        //     alienSus.HowSus();
 
-        }
-        else if (Input.GetKeyDown("c") && alienStatus.GetForm()==AlienStatus.Form.duct){
-            alienStatus.SetForm(AlienStatus.Form.alien);
-            alienSus.HowSus();
-        }
+        // }
+        // else if (Input.GetKeyDown("c") && alienStatus.GetForm()==AlienStatus.Form.duct){
+        //     alienStatus.SetForm(AlienStatus.Form.alien);
+        //     alienSus.HowSus();
+        // }
     }
 
     ///<summary>

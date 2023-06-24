@@ -19,6 +19,7 @@ TagManager:
   - gearemoji
   - alienmale
   - femalealien
+  - gamemanager
   layers:
   - Default
   - TransparentFX
