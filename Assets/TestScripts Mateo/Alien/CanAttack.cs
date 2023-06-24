@@ -57,7 +57,7 @@ public class CanAttack : MonoBehaviour
     }
 
     private void Attack(){
-        if (target!=null && Input.GetKeyDown("j") && alienStatus.GetForm()==AlienStatus.Form.alien && !isAttacking){
+        if (target!=null && Input.GetKeyDown("z") && alienStatus.GetForm()==AlienStatus.Form.alien && !isAttacking){
             alienAnimator.SetBool("isAttacking", true);
             isAttacking = true;
             StartCoroutine(RunAnimation());
