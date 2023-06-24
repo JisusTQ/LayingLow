@@ -57,7 +57,7 @@ public class GettingAttacked : MonoBehaviour
     }
 
     private void AlienIsAttackingMe(){
-        if (alienAttack.isAttacking){
+        if (alienAttack.isAttacking&& canBeAttacked){
             beingAttacked = true;
         }
     }

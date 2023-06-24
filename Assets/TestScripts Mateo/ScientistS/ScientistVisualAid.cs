@@ -16,7 +16,10 @@ public class ScientistVisualAid : MonoBehaviour
     ScientistStatus.Suspicion prevStatus;
     #endregion
 
+    ScientistMovement isDeadCheck;
+
     void Start(){
+        isDeadCheck = GetComponent<ScientistMovement>();
         status = GetComponent<ScientistStatus>();
         prevStatus = status.GetSus();
         GetVisualAlerts();
@@ -97,6 +100,12 @@ public class ScientistVisualAid : MonoBehaviour
             }
             prevStatus=status.GetSus();
         }
+
+        if(isDeadCheck.isDead){
+            yellowAlert.SetActive(false);
+            redAlert.SetActive(false);
+        }
+
     }
 
     ///<summary>

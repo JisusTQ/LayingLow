@@ -19,6 +19,8 @@ public class CanAttack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        maleScientists = GameObject.FindGameObjectsWithTag("Male");
+        femaleScientists = GameObject.FindGameObjectsWithTag("Female");
         alienStatus = GetComponent<AlienStatus>();
         alienAnimator = alienObj.GetComponent<Animator>();
     }
@@ -33,11 +35,6 @@ public class CanAttack : MonoBehaviour
     // z attack, x take body, c vent.
 
     private void FindToAttack(){
-        maleScientists = GameObject.FindGameObjectsWithTag("Male");
-        femaleScientists = GameObject.FindGameObjectsWithTag("Female");
-
-        Debug.Log(maleScientists.Length);
-
 
         // find a male target
         foreach (GameObject male in maleScientists)
