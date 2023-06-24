@@ -39,10 +39,6 @@ public class CanPosses : MonoBehaviour
 
 
     private void FindPosses(){
-        maleScientists = GameObject.FindGameObjectsWithTag("Male");
-        femaleScientists = GameObject.FindGameObjectsWithTag("Female");
-
-
         // find a male target
         foreach (GameObject male in maleScientists)
         {
