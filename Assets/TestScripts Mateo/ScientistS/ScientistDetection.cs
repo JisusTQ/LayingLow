@@ -24,6 +24,8 @@ public class ScientistDetection : MonoBehaviour
     float suspicion;
     float currentSuspicion;
 
+    bool test;
+
     ScientistStatus status;
     #endregion
 
@@ -38,8 +40,8 @@ public class ScientistDetection : MonoBehaviour
         status = GetComponent<ScientistStatus>();
     }
     void FixedUpdate(){
-        AlienChangedForm();
         IsAlienSeen();
+        AlienChangedForm();
     }
 
 
@@ -55,6 +57,10 @@ public class ScientistDetection : MonoBehaviour
         bool lookingAlienLeft = (alienDir<0 && movementInfo.Dir<0);
         bool lookingAlienRight = (alienDir>0 && movementInfo.Dir>0);
         isSeen = (lookingAlienLeft || lookingAlienRight);
+        if(!test){
+            Debug.Log(alienRoom.room==myRoom.room);
+            test=true;
+        }
         if (isSeen && !okSeen && (alienRoom.room==myRoom.room)){
             okSeen = true;
             suspicion = aliensSuspicion.HowSus();
