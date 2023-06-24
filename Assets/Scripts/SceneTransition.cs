@@ -29,6 +29,7 @@ public class SceneTransition : MonoBehaviour
 
     IEnumerator ChangeScene(string scena)
     {
+        Time.timeScale = 1;
         animator.SetTrigger("Iniciar");
         yield return new WaitForSeconds(animacionFinal.length);
         SceneManager.LoadScene(scena);
