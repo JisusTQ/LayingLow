@@ -35,6 +35,9 @@ public class CameraMovement : MonoBehaviour
             case 4:
                 transform.position = new Vector3(0, 42.5f, -5);
             break;
+            case 5:
+                transform.position= new Vector3(0, 49.32f,-5);
+            break;
         }
     }
 }

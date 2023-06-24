@@ -5,7 +5,7 @@ using UnityEngine;
 public class WhereAmI : MonoBehaviour
 {
 
-    float[,] rooms = {{-1.0f, 5.5f},{8.0f, 14.5f},{18.0f, 24.5f},{28.5f, 35f},{39.0f, 45.5f}};
+    float[,] rooms = {{-1.0f, 5.5f},{8.0f, 14.5f},{18.0f, 24.5f},{28.5f, 35f},{39.0f, 45.5f},{46,60} };
     public int room;
 
 

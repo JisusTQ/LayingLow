@@ -12,6 +12,14 @@ public class SceneTransition : MonoBehaviour
     private void Start()
     {
         animator = GetComponent<Animator>();
+        if (SceneManager.GetActiveScene().name == "Comic")
+        {
+            StartCoroutine(ComicScene());
+        }
+        if (SceneManager.GetActiveScene().name == "GameOver")
+        {
+            StartCoroutine(GameOverScene());
+        }
     }
 
     public void Startcorutina(string scena)
@@ -24,5 +32,20 @@ public class SceneTransition : MonoBehaviour
         animator.SetTrigger("Iniciar");
         yield return new WaitForSeconds(animacionFinal.length);
         SceneManager.LoadScene(scena);
+    }
+
+    IEnumerator ComicScene()
+    {
+        yield return new WaitForSeconds(31);
+        animator.SetTrigger("Iniciar");
+        yield return new WaitForSeconds(animacionFinal.length);
+        SceneManager.LoadScene("Level");
+    }
+    IEnumerator GameOverScene()
+    {
+        yield return new WaitForSeconds(5);
+        animator.SetTrigger("Iniciar");
+        yield return new WaitForSeconds(animacionFinal.length);
+        SceneManager.LoadScene("Menu");
     }
 }

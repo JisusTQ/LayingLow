@@ -11,8 +11,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip gameplay;
     public AudioClip menu;
     public AudioClip click;
-    public AudioClip walking;
-    public AudioClip down;
+    public AudioClip comic;
     public AudioClip scientist;
     public AudioClip death;
     public AudioClip convert;
@@ -37,6 +36,18 @@ public class AudioManager : MonoBehaviour
         {
             musicSource.Pause();
             musicSource.clip = menu;
+            musicSource.Play();
+        }
+        if (SceneManager.GetActiveScene().name == "Comic")
+        {
+            musicSource.Pause();
+            musicSource.clip = comic;
+            musicSource.Play();
+        }
+        if (SceneManager.GetActiveScene().name == "Level")
+        {
+            musicSource.Pause();
+            musicSource.clip = gameplay;
             musicSource.Play();
         }
     }
