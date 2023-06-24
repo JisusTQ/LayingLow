@@ -43,7 +43,7 @@ public class SceneTransition : MonoBehaviour
     }
     IEnumerator GameOverScene()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(5f);
         animator.SetTrigger("Iniciar");
         yield return new WaitForSeconds(animacionFinal.length);
         SceneManager.LoadScene("Menu");
