@@ -40,7 +40,7 @@ public class SceneTransition : MonoBehaviour
         yield return new WaitForSeconds(31);
         animator.SetTrigger("Iniciar");
         yield return new WaitForSeconds(animacionFinal.length);
-        SceneManager.LoadScene("Level");
+        SceneManager.LoadScene("Test");
     }
     IEnumerator GameOverScene()
     {

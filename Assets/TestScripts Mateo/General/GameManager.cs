@@ -10,10 +10,12 @@ public class GameManager : MonoBehaviour
     float timeRemaining=30;
     public bool isCorpse;
     public bool corpseActivates;
+    SceneTransition transitar;
     // Start is called before the first frame update
     void Start()
     {
         alien = GameObject.FindGameObjectWithTag("alien");
+        transitar = FindAnyObjectByType<SceneTransition>();
     }
 
     // Update is called once per frame
@@ -23,6 +25,7 @@ public class GameManager : MonoBehaviour
         if(corpseActivates){
             StartCoroutine(CorpseDuration());
         }
+        TimeIsOver();
     }
 
 
@@ -39,7 +42,7 @@ public class GameManager : MonoBehaviour
 
     private void TimeIsOver(){
         if (timeRemaining<0){
-            SceneManager.LoadScene("");
+            transitar.Startcorutina("GameOver");
         } 
     }
 

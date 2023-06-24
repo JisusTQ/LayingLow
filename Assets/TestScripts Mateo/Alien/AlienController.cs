@@ -7,7 +7,7 @@ public class AlienController : MonoBehaviour
     AlienStatus alienStatus;
     AlienSus alienSus;
     CanPosses alienposses;
-
+    AudioManager audiop;
     GameObject gameManager;
 
     void Start(){
@@ -15,6 +15,7 @@ public class AlienController : MonoBehaviour
         alienStatus = GetComponent<AlienStatus>();
         alienSus = GetComponent<AlienSus>();
         alienposses = GetComponent<CanPosses>();
+        audiop = FindAnyObjectByType<AudioManager>();
     }
     void Update()
     {
@@ -30,19 +31,19 @@ public class AlienController : MonoBehaviour
         if (!gameManager.GetComponent<GameManager>().isCorpse){
             alienStatus.SetForm(AlienStatus.Form.alien);
             alienSus.HowSus();
-            Debug.Log("here");
         }
         if (Input.GetKeyDown("x")){
-            Debug.Log("here2");
             string bodyTaken = alienposses.Posses();
             if (bodyTaken=="male")
             {
+                audiop.PlaySFX(audiop.scientist);
                 gameManager.GetComponent<GameManager>().isCorpse = true;
                 gameManager.GetComponent<GameManager>().corpseActivates= true;
                 alienStatus.SetForm(AlienStatus.Form.malecorpse);
             }
             else if(bodyTaken == "female")
             {
+                audiop.PlaySFX(audiop.scientist);
                 gameManager.GetComponent<GameManager>().isCorpse= true;
                 gameManager.GetComponent<GameManager>().corpseActivates= true;
                 alienStatus.SetForm(AlienStatus.Form.femalecorpse);

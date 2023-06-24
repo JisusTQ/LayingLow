@@ -44,7 +44,7 @@ public class ScientistMovement : MonoBehaviour
     bool isdying;
 
     public bool isDead;
-
+    private AudioManager audiop;
     
     Animator scientistAnimator;
     void Start()
@@ -56,6 +56,7 @@ public class ScientistMovement : MonoBehaviour
         visualAid = GetComponent<ScientistVisualAid>();
         scientistAnimator = GetComponent<Animator>();
         status = GetComponent<ScientistStatus>();
+        audiop = FindAnyObjectByType<AudioManager>();
         //Set Object Direction
         SetDir();
         //Start task selection coroutine
@@ -275,6 +276,7 @@ public class ScientistMovement : MonoBehaviour
     IEnumerator GotAttacked(){
         isdying=true;
         scientistAnimator.SetBool("isBeingAttacked", true);
+        audiop.PlaySFX(audiop.death);
         yield return new WaitForSeconds(1.3f);
         scientistAnimator.SetBool("isDead", true);
         isDead = true;
